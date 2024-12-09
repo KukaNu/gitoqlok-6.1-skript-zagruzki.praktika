@@ -1,0 +1,13 @@
+{
+  "qTitle": "6.1-skript-zagruzki.praktika",
+  "qThumbnail": {
+    "qUrl": "/api/v1/apps/cd4c55a3-29de-46e2-ba17-95add32d0409/media/files/ЛогоКлик.png"
+  },
+  "qUsage": "ANALYTICS",
+  "encrypted": true,
+  "id": "cd4c55a3-29de-46e2-ba17-95add32d0409",
+  "published": false,
+  "owner": "auth0|f34f5db9ca1d96e25c7d9624088f280641a5de911cc2498632d15f1772b9fddd",
+  "ownerId": "6756717d8b706256b35af15c",
+  "_resourcetype": "app"
+}

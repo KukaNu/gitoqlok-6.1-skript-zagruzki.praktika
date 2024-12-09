@@ -1,0 +1,13 @@
+///$tab Mapping
+Разделители:
+	Mapping Load * Inline [
+Разделители, НовыйРазделитель
+",",|
+";",|
+];
+
+[Справочник сотрудников]:
+Mapping Load
+	s_userName,
+    i_responsibleUserID
+FROM [lib://SaveQVD/SaveQVD/CRM_ResponsibleUsers.qvd] (qvd);

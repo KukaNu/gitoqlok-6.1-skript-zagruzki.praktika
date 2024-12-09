@@ -1,0 +1,89 @@
+///$tab Сделки
+Сделки:
+LOAD
+    i_leadID,
+    i_contactID as [Код контакта],
+    s_name as Название,
+    i_sum as Бюджет,
+    if(i_sum>=400000, 'Крупная сделка', 'Обычная сделка') as [Тип сделки],
+    i_pipelineID,
+    i_statusID,
+    i_dateCreate as [Дата Создания],
+    i_dateClose as [Дата Закрытия],
+    i_responsibleUserID as [Код сотрудника],
+    contacts
+FROM [lib://SaveQVD/SaveQVD/crmleadsnoetl.qvd]
+(qvd);
+
+LEFT JOIN (Сделки)
+LOAD
+    [Код контакта],
+    [Код компании],
+    Компания
+   
+RESIDENT Контакты;
+
+DROP Fields [Код компании], [Компания] FROM Контакты;
+
+Сотрудники:
+LOAD
+    i_responsibleUserID as [Код сотрудника],
+    s_userName as Менеджер,
+    s_email as email,
+    s_userGroup as Отдел
+FROM [lib://SaveQVD/SaveQVD/CRM_ResponsibleUsers.qvd]
+(qvd);
+
+
+Компании_RFM:
+LOAD *,
+/*R1—F1—M(1-3) — потерянные;
+R1—F(2-3)—M(1-3) — потерянные лояльные,
+R2-F(1-2)-M(1-3) — спящие;
+R2-F(3)-M(1-3) — лояльные спящие;
+R3—F1—M(1-3) — новички;
+R3—F2—M(1-3) — развивающиеся;
+R3—F3—M(1-2) — постоянные.
+R3—F3—M3 — VIP.*/
+If(Recensy=1 and Frequency=1 and (Monetary=1 or Monetary=2 or Monetary=3), 'потерянные',
+If(Recensy=1 and (Frequency=2 or Frequency=3) and (Monetary=1 or Monetary=2 or Monetary=3), 'потерянные лояльные',
+If(Recensy=2 and (Frequency=1 or Frequency=2) and (Monetary=1 or Monetary=2 or Monetary=3), 'спящие',
+If(Recensy=2 and Frequency=3 and (Monetary=1 or Monetary=2 or Monetary=3), 'лояльные спящие',
+If(Recensy=3 and Frequency=1 and (Monetary=1 or Monetary=2 or Monetary=3), 'новички',
+If(Recensy=3 and Frequency=2 and (Monetary=1 or Monetary=2 or Monetary=3), 'развивающиеся',
+If(Recensy=3 and Frequency=3 and (Monetary=1 or Monetary=2), 'постоянные', 'VIP' ))))))) as Segment;
+
+LOAD *,
+	/* Recensy/Давность 
+    1-последняя сделка более года назад
+    2-последняя сделка от полугода до года назад
+    3-последняя сделка менее полугода назад
+    */
+    
+if([Дней с последней сделки] <=183, 3,
+ if([Дней с последней сделки]<=365, 2, 1)) as Recensy,
+ 	/* Frequency/Частота 
+    1 - 1-2 Сделки
+    2 - 3-5 Сделок
+    3 - 6 и более сделок
+    */
+if([Количество сделок] >=6, 3,
+ if([Количество сделок]>=3, 2, 1)) as Frequency,
+	/* Monetary/Ценность 
+    1 - до 1 млн
+    2 - 1-2 млн
+    3 - более 2 млн
+    */
+if([Сумма сделок] > 2000000, 3,
+ if([Сумма сделок]>=1000000, 2, 1)) as Monetary,;
+
+LOAD *,
+	Date#('27.07.2020', 'DD.MM.YYYY')-[Дата последней сделки] as [Дней с последней сделки];
+LOAD
+	[Код компании],
+    date(Max([Дата Создания])) as [Дата последней сделки],
+    Count(DISTINCT i_leadID) as [Количество сделок],
+    Sum(Бюджет) as [Сумма сделок]
+RESIDENT Сделки
+WHERE i_statusID=142 or i_statusID=143
+Group by [Код компании];

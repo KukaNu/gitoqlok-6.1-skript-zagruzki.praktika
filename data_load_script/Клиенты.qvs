@@ -1,0 +1,19 @@
+///$tab Клиенты
+Контакты:
+LOAD
+    i_contactID as [Код контакта],
+    i_companyID as [Код компании],
+    Телефон,
+    EMAIL,
+    ФИО
+FROM [lib://SaveQVD/SaveQVD/crmcontacts.qvd]
+(qvd);
+
+
+
+LEFT JOIN (Контакты)
+LOAD
+    i_companyID as [Код компании],
+    Название as [Компания]
+FROM [lib://SaveQVD/SaveQVD/crmcompanies.qvd]
+(qvd);

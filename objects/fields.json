@@ -1,0 +1,272 @@
+[
+  {
+    "qName": "EMAIL",
+    "qTags": [
+      "$text",
+      "$ascii"
+    ],
+    "qSrcTables": [
+      "Контакты"
+    ]
+  },
+  {
+    "qName": "Frequency",
+    "qTags": [
+      "$numeric",
+      "$integer"
+    ],
+    "qSrcTables": [
+      "Компании_RFM"
+    ]
+  },
+  {
+    "qName": "Monetary",
+    "qTags": [
+      "$numeric",
+      "$integer"
+    ],
+    "qSrcTables": [
+      "Компании_RFM"
+    ]
+  },
+  {
+    "qName": "Recensy",
+    "qTags": [
+      "$numeric",
+      "$integer"
+    ],
+    "qSrcTables": [
+      "Компании_RFM"
+    ]
+  },
+  {
+    "qName": "Segment",
+    "qTags": [
+      "$text"
+    ],
+    "qSrcTables": [
+      "Компании_RFM"
+    ]
+  },
+  {
+    "qName": "contacts",
+    "qTags": [],
+    "qSrcTables": [
+      "Сделки"
+    ]
+  },
+  {
+    "qName": "email",
+    "qTags": [
+      "$text",
+      "$ascii"
+    ],
+    "qSrcTables": [
+      "Сотрудники"
+    ]
+  },
+  {
+    "qName": "i_leadID",
+    "qTags": [
+      "$numeric",
+      "$integer"
+    ],
+    "qSrcTables": [
+      "Сделки"
+    ]
+  },
+  {
+    "qName": "i_pipelineID",
+    "qTags": [
+      "$numeric",
+      "$integer"
+    ],
+    "qSrcTables": [
+      "Сделки"
+    ]
+  },
+  {
+    "qName": "i_statusID",
+    "qTags": [
+      "$numeric",
+      "$integer"
+    ],
+    "qSrcTables": [
+      "Сделки"
+    ]
+  },
+  {
+    "qName": "Бюджет",
+    "qTags": [
+      "$numeric",
+      "$integer"
+    ],
+    "qSrcTables": [
+      "Сделки"
+    ]
+  },
+  {
+    "qName": "Дата Закрытия",
+    "qTags": [
+      "$numeric",
+      "$integer"
+    ],
+    "qSrcTables": [
+      "Сделки"
+    ]
+  },
+  {
+    "qName": "Дата Создания",
+    "qTags": [
+      "$numeric",
+      "$integer",
+      "$timestamp",
+      "$date"
+    ],
+    "qSrcTables": [
+      "Сделки"
+    ]
+  },
+  {
+    "qName": "Дата последней сделки",
+    "qTags": [
+      "$numeric",
+      "$integer",
+      "$timestamp",
+      "$date"
+    ],
+    "qSrcTables": [
+      "Компании_RFM"
+    ]
+  },
+  {
+    "qName": "Дней с последней сделки",
+    "qTags": [
+      "$numeric",
+      "$integer"
+    ],
+    "qSrcTables": [
+      "Компании_RFM"
+    ]
+  },
+  {
+    "qName": "Код компании",
+    "qTags": [
+      "$numeric",
+      "$integer",
+      "$key"
+    ],
+    "qSrcTables": [
+      "Сделки",
+      "Компании_RFM"
+    ]
+  },
+  {
+    "qName": "Код контакта",
+    "qTags": [
+      "$numeric",
+      "$integer",
+      "$key"
+    ],
+    "qSrcTables": [
+      "Контакты",
+      "Сделки"
+    ]
+  },
+  {
+    "qName": "Код сотрудника",
+    "qTags": [
+      "$numeric",
+      "$integer",
+      "$key"
+    ],
+    "qSrcTables": [
+      "Сделки",
+      "Сотрудники"
+    ]
+  },
+  {
+    "qName": "Количество сделок",
+    "qTags": [
+      "$numeric",
+      "$integer"
+    ],
+    "qSrcTables": [
+      "Компании_RFM"
+    ]
+  },
+  {
+    "qName": "Компания",
+    "qTags": [
+      "$text"
+    ],
+    "qSrcTables": [
+      "Сделки"
+    ]
+  },
+  {
+    "qName": "Менеджер",
+    "qTags": [
+      "$text"
+    ],
+    "qSrcTables": [
+      "Сотрудники"
+    ]
+  },
+  {
+    "qName": "Название",
+    "qTags": [
+      "$text"
+    ],
+    "qSrcTables": [
+      "Сделки"
+    ]
+  },
+  {
+    "qName": "Отдел",
+    "qTags": [
+      "$text"
+    ],
+    "qSrcTables": [
+      "Сотрудники"
+    ]
+  },
+  {
+    "qName": "Сумма сделок",
+    "qTags": [
+      "$numeric",
+      "$integer"
+    ],
+    "qSrcTables": [
+      "Компании_RFM"
+    ]
+  },
+  {
+    "qName": "Телефон",
+    "qTags": [
+      "$numeric",
+      "$integer"
+    ],
+    "qSrcTables": [
+      "Контакты"
+    ]
+  },
+  {
+    "qName": "Тип сделки",
+    "qTags": [
+      "$text"
+    ],
+    "qSrcTables": [
+      "Сделки"
+    ]
+  },
+  {
+    "qName": "ФИО",
+    "qTags": [
+      "$text"
+    ],
+    "qSrcTables": [
+      "Контакты"
+    ]
+  }
+]

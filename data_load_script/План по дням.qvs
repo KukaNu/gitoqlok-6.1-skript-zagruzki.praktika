@@ -1,0 +1,13 @@
+///$tab План по дням
+// [План по дням]:
+// 	Load
+//     	[Код сотрудника],
+//         Месяц,
+//     Date([Месяц]+iterNO()-1) as День,
+//     Round(План / day(MonthEnd(Месяц)), 0.01) as План
+// RESIDENT План
+// WHILE [Месяц]+iterNO()-1 <= MonthEnd ([Месяц]); 
+
+// DROP Table План;
+
+// Store [План по дням] INTO [lib://SaveQVD/SaveQVD/План по дням.qvd] (qvd);

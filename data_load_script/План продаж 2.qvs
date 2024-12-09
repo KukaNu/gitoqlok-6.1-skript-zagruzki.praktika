@@ -1,0 +1,19 @@
+///$tab План продаж 2
+// map [Код сотрудника] using 'Справочник сотрудников';
+
+// for each i in 2014,2016,2017,2018
+
+// План:
+// LOAD
+//     Сотрудник,
+//     if(IsNull(Сотрудник), Peek('СотрудникNew'), Сотрудник) as [СотрудникNew],
+//     if(IsNull(Сотрудник), Peek('СотрудникNew'), Сотрудник) as [Код сотрудника],
+//     Date#(Месяц, 'MM YYYY') as Месяц,
+//     План
+// FROM [lib://SaveQVD/SaveQVD/ПЗД План.xlsx]
+// (ooxml, embedded labels, table is [План $(i)])
+// Where NOT ISNULL(План);
+// next;
+
+// drop Fields Сотрудник From План;
+// Rename Field СотрудникNew to Сотрудник;
