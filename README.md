@@ -9,6 +9,7 @@ Created By KukaNu(No name specified in Profile) at Mon Dec 09 2024 10:21:45 GMT+
 Sheet Title | Description
 ------------ | -------------
 Агрегирования в скрипте загрузки|
+для Git изменения|
 Преобразование данных в корректный формат|
 Скрипт загрузки|
 
