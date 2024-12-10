@@ -50,9 +50,6 @@ LOAD
     Название as [Компания]
 FROM [lib://SaveQVD/SaveQVD/crmcompanies.qvd]
 (qvd);
-
-	
-
 ///$tab Сделки
 Сделки:
 LOAD
@@ -142,8 +139,6 @@ LOAD
 RESIDENT Сделки
 WHERE i_statusID=142 or i_statusID=143
 Group by [Код компании];
-
-
 ///$tab План продаж 2
 // map [Код сотрудника] using 'Справочник сотрудников';
 
@@ -218,11 +213,7 @@ Group by [Код компании];
 // Resident [План_temp];
 
 
-// Drop Table [План_temp]; 
-
-
-
-
+// Drop Table [План_temp];
 ///$tab План по дням
 // [План по дням]:
 // 	Load
@@ -236,4 +227,3 @@ Group by [Код компании];
 // DROP Table План;
 
 // Store [План по дням] INTO [lib://SaveQVD/SaveQVD/План по дням.qvd] (qvd);
-        
